@@ -17,6 +17,10 @@ app.get('/', function(req, res){
 // /public/html/index.html
 // __dirname > 현재 프로젝트 디렉토리
 
+app.get('/todo', function(req, res){
+	res.sendFile(path.join(__dirname + '/public/html/todo.html'));
+});
+
 app.listen(8080);
 // 포트 8080 사용하겟다.
 console.log('Express Listening on port 8080...');
