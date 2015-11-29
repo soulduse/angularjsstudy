@@ -1,0 +1,7 @@
+#공통 gitignore
+
+/node_modules
+/public/components
+
+#intelij 사용시 ignore
+.idea
