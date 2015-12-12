@@ -16,5 +16,15 @@
     <br>
     <button ng-click='toUpper();'>대문자 변환</button>
     <br>
+
+    <h1>장바구니</h1>
+    <div ng-repeat="item in items">		<!-- for문과 같다고 생각하면 된다. items배열에 있는 내용을 하나하나 다 뽑아 오겠다.-->
+    	<span>{{$index}}</span>			<!-- {{$index}} = ng-repeat에서 사용할수 있는 index값 -->
+    	<span>{{$item.title}}</span>
+    	<span>수량 : <input type="text" ng-model="item.count"></span>
+    	<span>가격 : {{item.price}}</span>
+    	<span>총합 : {{item.count * item.price}}원</span>
+    	<button ng-click='remove(item);'>삭제</button>
+    </div>
 </body>
 </html>
