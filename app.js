@@ -29,6 +29,11 @@ app.get('/books', function(req, res){
 	res.sendFile(path.join(__dirname + '/public/html/book.html'));
 });
 
+
+app.get('/hello', function(req, res){
+	res.sendFile(path.join(__dirname + '/public/html/hello.html'));
+});
+
 app.listen(8080);
 // 포트 8080 사용하겟다.
 console.log('Express Listening on port 8080...');
