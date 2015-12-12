@@ -17,10 +17,24 @@ angular.module('hello', [])
 			$scope.hello.msg = $filter('uppercase')($scope.hello.msg);
 		}
 
-		$scope.remove = function(item){
+		// $scope.remove = function(item){
+		// 	$scope.items.splice(index, 1);
+		// }
+
+		$scope.remove = function(index){
 			var index = $scope.items.indexOf(item);
 			$scope.items.splice(index, 1);
 		}
+
+		// $scope.sumPrice = function(price){
+		// 	var sumPrice;
+		// 	for(var i=0; i<$scope.items.lenth; i++){
+		// 		sumPrice = scope.items[i].price;
+		// 		console.log(sumPrice);
+		// 	}
+
+		// 	$scope.hello.totalPrice = sumPrice;
+		// }
 
 		$scope.items = [
 			{
