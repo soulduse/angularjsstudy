@@ -13,6 +13,8 @@ angular.module('hello', [])
 			msg : 'hello.'
 		}
 
+
+
 		$scope.toUpper = function(){
 			$scope.hello.msg = $filter('uppercase')($scope.hello.msg);
 		}
@@ -22,19 +24,36 @@ angular.module('hello', [])
 		// }
 
 		$scope.remove = function(index){
-			var index = $scope.items.indexOf(item);
 			$scope.items.splice(index, 1);
 		}
 
-		// $scope.sumPrice = function(price){
-		// 	var sumPrice;
-		// 	for(var i=0; i<$scope.items.lenth; i++){
-		// 		sumPrice = scope.items[i].price;
-		// 		console.log(sumPrice);
-		// 	}
+		$scope.add = function(){
+			$scope.items.push($scope.items);
+		}
 
-		// 	$scope.hello.totalPrice = sumPrice;
-		// }
+		$scope.totalPrice = function(items){
+			var total = 0;
+
+			for(var i=0; i<items.length; i++){
+				total += items[i].price * items[i].count;
+			}
+
+			console.log(total);
+			return total;
+		}
+
+		$scope.salePrice = function(totalPrice){
+			if(totalPrice >= 20000){
+				return totalPrice*0.1;
+			}else{
+				return 0;
+			}
+		}
+
+		$scope.payPrice = function(totalPrice,salePrice){
+			
+			return totalPrice-salePrice;
+		}
 
 		$scope.items = [
 			{

@@ -18,21 +18,29 @@
     <br>
 
     <h1>장바구니</h1>
+    <h3>직접추가</h3>
+    이름:<input type="text" ng-model="items.title">
+    수량:<input type="text" ng-model="items.count">
+    가격:<input type="text" ng-model="items.price">
+    <button ng-click="add()">추가</button>
+    <br><br>
     <div ng-repeat="item in items">		<!-- for문과 같다고 생각하면 된다. items배열에 있는 내용을 하나하나 다 뽑아 오겠다.-->
-    	<span>{{$index}}</span>			<!-- {{$index}} = ng-repeat에서 사용할수 있는 index값 -->
-    	<span>{{$item.title}}</span>
+    	<span> {{$index}}</span>
+        <span>{{item.title}}</span>			<!-- {{$index}} = ng-repeat에서 사용할수 있는 index값 -->
     	<span>수량 : <input type="text" ng-model="item.count"></span>
     	<span>가격 : {{item.price}}</span>
     	<span>총합 : {{item.count * item.price}}원</span>
-    	<button ng-click='remove(item);'>삭제</button>
+    	<button ng-click="remove($index)">삭제</button>
     	<!-- <button ng-click='remove(index);'>삭제</button> -->
     </div>
 
-    <!-- <div ng-repeat="item in items">
-    	
-    	<h3 ng-model="sumPrice(item);"></h3>
-    </div>
-    총합 : {{hello.totalPrice}} -->
+<br>
+
+<strong>전체 금액 : {{totalPrice(items)}} 원</strong><br>
+<strong>할인 금액 : {{salePrice(totalPrice(items))}} 원</strong><br>
+<strong>결제 금액 : {{payPrice(totalPrice(items),salePrice(totalPrice(items)))}} 원</strong>
+
+
     
     
 </body>
