@@ -17,7 +17,10 @@
 	<div class="panel panel-default now" ng-controller="bookListCtrl">
 		<div class="col-xs-3">
 			<a ng-click="selectHome()" class="btn btn-block btn-default btn-lg">Home</a>
-			<a ng-repeat="item in data.books | orderBy: '-grade'| gradeAsk: 'grade'" ng-click="selectGrade(item)" class="btn btn-block btn-default btn-lg">
+			<a ng-repeat="item in data.books | orderBy: '-grade'| gradeAsk: 'grade'" 
+			ng-click="selectGrade(item)" 
+			class="btn btn-block btn-default btn-lg"
+			ng-class="getGradeClass(item)">
 			{{item}}</a>
 		</div>
 		<div class="col-xs-8">
