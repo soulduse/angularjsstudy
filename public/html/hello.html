@@ -19,9 +19,9 @@
 
     <h1>장바구니</h1>
     <h3>직접추가</h3>
-    이름:<input type="text" ng-model="items.title">
-    수량:<input type="text" ng-model="items.count">
-    가격:<input type="text" ng-model="items.price">
+    이름:<input type="text" ng-model="addItem.title">
+    수량:<input type="text" ng-model="addItem.count">
+    가격:<input type="text" ng-model="addItem.price">
     <button ng-click="add()">추가</button>
     <br><br>
     <div ng-repeat="item in items">		<!-- for문과 같다고 생각하면 된다. items배열에 있는 내용을 하나하나 다 뽑아 오겠다.-->
@@ -35,10 +35,10 @@
     </div>
 
 <br>
-
-<strong>전체 금액 : {{totalPrice(items)}} 원</strong><br>
-<strong>할인 금액 : {{salePrice(totalPrice(items))}} 원</strong><br>
-<strong>결제 금액 : {{payPrice(totalPrice(items),salePrice(totalPrice(items)))}} 원</strong>
+{{total()}}
+<strong>전체 금액 : {{bill.totalPrice}} 원</strong><br>
+<strong>할인 금액 : {{bill.discountPrice}} 원</strong><br>
+<strong>결제 금액 : {{bill.payPrice}} 원</strong>
 
 
     

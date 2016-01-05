@@ -13,47 +13,73 @@ angular.module('hello', [])
 			msg : 'hello.'
 		}
 
-
-
 		$scope.toUpper = function(){
 			$scope.hello.msg = $filter('uppercase')($scope.hello.msg);
 		}
-
-		// $scope.remove = function(item){
-		// 	$scope.items.splice(index, 1);
-		// }
 
 		$scope.remove = function(index){
 			$scope.items.splice(index, 1);
 		}
 
 		$scope.add = function(){
-			$scope.items.push($scope.items);
-		}
-
-		$scope.totalPrice = function(items){
-			var total = 0;
-
-			for(var i=0; i<items.length; i++){
-				total += items[i].price * items[i].count;
+			var item = {
+				title : $scope.addItem.title,
+				count : $scope.addItem.count,
+				price : $scope.addItem.price
 			}
 
-			console.log(total);
-			return total;
+			$scope.items.push(item);
+			$scope.refresh();
 		}
 
-		$scope.salePrice = function(totalPrice){
-			if(totalPrice >= 20000){
-				return totalPrice*0.1;
-			}else{
-				return 0;
-			}
+		$scope.refresh = function(){
+			$scope.addItem = {
+					title : '',
+					price : 0,
+					count : 0
+				}
 		}
 
-		$scope.payPrice = function(totalPrice,salePrice){
+		$scope.bill = {
+			totalPrice : 0,
+			discountPrice : 0,
+			payPrice : 0
+		}
+
+		$scope.total = function(){
+			var totalPrice = 0;
+			angular.forEach($scope.items, function(item){
+				totalPrice += item.count * item.price;
+			});
+
+			$scope.bill.totalPrice = totalPrice;
+			$scope.bill.discountPrice = (totalPrice > 20000) ? totalPrice/10 : 0;
+			$scope.bill.payPrice = totalPrice - $scope.bill.discountPrice;
+		}
+
+		// $scope.totalPrice = function(items){
+		// 	var total = 0;
+
+		// 	for(var i=0; i<items.length; i++){
+		// 		total += items[i].price * items[i].count;
+		// 	}
+
+		// 	console.log(total);
+		// 	return total;
+		// }
+
+		// $scope.salePrice = function(totalPrice){
+		// 	if(totalPrice >= 20000){
+		// 		return totalPrice*0.1;
+		// 	}else{
+		// 		return 0;
+		// 	}
+		// }
+
+		// $scope.payPrice = function(totalPrice,salePrice){
 			
-			return totalPrice-salePrice;
-		}
+		// 	return totalPrice-salePrice;
+		// }
 
 		$scope.items = [
 			{
