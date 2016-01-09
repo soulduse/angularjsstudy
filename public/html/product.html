@@ -24,7 +24,8 @@
 			{{item}}</a>
 		</div>
 		<div class="col-xs-8">
-			<div class="well" ng-repeat="item in data.products | filter:categoryFilterFn">	<!-- ng-repeat Angular의 반복문 -->
+			<div class="well" ng-repeat="item in data.products | 
+			filter:categoryFilterFn | range:selectedPage:pageSize">	<!-- ng-repeat Angular의 반복문 -->
 				<h3>
 					<strong>{{item.name}}</strong>
 					<span class="pull-right label label-primary">

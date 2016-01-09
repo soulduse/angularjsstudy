@@ -8,7 +8,7 @@
 // []을 만들면 새로 만들겠다.
 
 angular.module('hello', [])
-	.controller('HelloController', function($scope, $filter){
+	.controller('HelloController', function($scope, $filter, $http){
 		$scope.hello = {
 			msg : 'hello.'
 		}
@@ -57,30 +57,6 @@ angular.module('hello', [])
 			$scope.bill.payPrice = totalPrice - $scope.bill.discountPrice;
 		}
 
-		// $scope.totalPrice = function(items){
-		// 	var total = 0;
-
-		// 	for(var i=0; i<items.length; i++){
-		// 		total += items[i].price * items[i].count;
-		// 	}
-
-		// 	console.log(total);
-		// 	return total;
-		// }
-
-		// $scope.salePrice = function(totalPrice){
-		// 	if(totalPrice >= 20000){
-		// 		return totalPrice*0.1;
-		// 	}else{
-		// 		return 0;
-		// 	}
-		// }
-
-		// $scope.payPrice = function(totalPrice,salePrice){
-			
-		// 	return totalPrice-salePrice;
-		// }
-
 		$scope.items = [
 			{
 				title : '볼펜',
@@ -101,5 +77,18 @@ angular.module('hello', [])
 		];
 
 		// $scope.hello.msg = '안녕하세요.' 와 같다.
+
+		$scope.loadData = function(){
+			alert('시작');
+			$http.get('/hello/data')
+			.success(function(data){
+				$scope.products = data;
+				alert('데이터 도착');
+			});
+
+			alert('끝');
+			
+			alert('끝끝');
+		}
 
 	});
