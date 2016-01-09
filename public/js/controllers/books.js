@@ -1,5 +1,6 @@
 angular.module('book')
 .constant('bookListActiveClass', 'btn-danger')
+.constant('bookListPageCount', 2)
 .controller('bookListCtrl', function($scope, $filter, bookListActiveClass){
 	var selectedGrade = null;
 

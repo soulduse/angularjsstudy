@@ -84,11 +84,18 @@ angular.module('hello', [])
 			.success(function(data){
 				$scope.products = data;
 				alert('데이터 도착');
+			}).error(function(data){
+
 			});
 
 			alert('끝');
 			
 			alert('끝끝');
+		}
+
+		// Ajax post 추가 코드
+		$scope.pushData = function(product){
+			$http.post('/hello/data')
 		}
 
 	});

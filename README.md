@@ -105,3 +105,20 @@ $scope - html, js가 같이 보도록 만들었다.
 
 UI상에서는 사람들이 계속 이용하게 하고, 
 시간이 많이 걸리는 작업들은 요청만 하고 끝나면 그때 요청후 작업들을 수행한다.
+
+deprecated - 이 코드는 사라질 예정이다. 사용을 권장하지 않는다.
+
+promise pattern
+```
+$scope.loadData = function(){
+	alert('시작');
+	$http.get('/hello/data')
+	.success(function(data){
+		$scope.products = data;
+		alert('데이터 도착');
+	}).error(function(data){
+		
+	});
+
+```
+
