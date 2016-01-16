@@ -8,7 +8,7 @@
 // []을 만들면 새로 만들겠다.
 
 angular.module('hello', [])
-	.controller('HelloController', function($scope, $filter, $http){
+	.controller('HelloController', function($scope, $filter, $http, $timeout){
 		$scope.hello = {
 			msg : 'hello.'
 		}
@@ -98,4 +98,22 @@ angular.module('hello', [])
 			$http.post('/hello/data')
 		}
 
+		$scope.result = false;
+		$scope.showQuiz = function(){
+			$scope.result = true;
+			var promiseObj = $timeout(function(){
+				return $scope.answer;
+			}, 3000);
+
+			promiseObj.then(function(input){
+				if(input == 39){
+					$scope.result = true;
+					$scope.msg = '정답 ! ';
+				}else{
+					$scope.result = false;
+					$scope.msg = '틀렸어요';
+				}
+				$scope.info = '다시 시작하려면 refresh 해주세요.';
+			});
+		};
 	});
