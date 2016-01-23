@@ -169,3 +169,30 @@ $scope.loadData = function(){
     - 사용이유 : 콜백 지옥 일 때 코드관리가 너무 힘들다.
         - 비동기 안에 비동기, 또 그 비동기 안에 비동기 ....
         - 따라서 나온 것이 promise/Async 방식
+
+
+
+
+[2016-01-23]
+------------------------
+1. Apache tomcat
+    - Apache : 웹 서버
+    - tomcat : WAS
+
+2. nginx : 웹서버
+
+3. css, js의 경우 동일한 파일명으로 하지 않는다.
+   - 브라우저가 캐시정보를 가지고 있어서 즉각 적으로 변경되지 않기 때문에.
+
+
+4. promise
+    - javaScript promise
+    - q.all([a,b])
+        - a와 b를 순차적으로 실행 시키나, a가 끝나고 b가 실행 되는 것은 아니다.
+        - 실행만 순차적으로 시키고, 내부적인 순서는 보장하지 못한다.
+    - 비동기 처리를 순차적으로 시작하려면 then을 사용해야 한다.
+        - q.all() -> q.defer()
+    - return을 하지 않으면 promise객체를 리턴시키는것이 아니라 그냥 해당 객체를 리턴한다.
+    
+5. 책추천 
+    - http://book.naver.com/bookdb/book_detail.nhn?bid=9252528

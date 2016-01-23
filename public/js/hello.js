@@ -8,7 +8,7 @@
 // []을 만들면 새로 만들겠다.
 
 angular.module('hello', [])
-	.controller('HelloController', function($scope, $filter, $http, $timeout){
+	.controller('HelloController', function($scope, $filter, $http, $timeout, $q, $timeout){
 		$scope.hello = {
 			msg : 'hello.'
 		}
@@ -115,5 +115,67 @@ angular.module('hello', [])
 				}
 				$scope.info = '다시 시작하려면 refresh 해주세요.';
 			});
+		};
+
+
+		$scope.promiseTest = function(number){
+			var defer = $q.defer();
+			defer.promise
+				.then(function(){
+					return $timeout(function(){
+						alert('aynckA');
+					},3000);
+				})
+				.then(function(){
+					return $timeout(function(){
+						alert('aynckB');
+					}, 1000);
+				});
+			defer.resolve();
+		};
+
+		// $scope.promiseTest(1);
+
+
+
+		$scope.promiseQuiz = function(){
+			var defer = $q.defer();
+			defer.promise
+				.then(function(){
+					asyncC();
+				})
+				.then(function(){
+					return asyncA();
+				})
+				.then(function(){
+					return asyncB();
+				})
+				.then(function(){
+					return alert('끝났다!!');
+				});
+			defer.resolve();
+		};
+
+		$scope.promiseQuiz();
+
+		function asyncA(){
+			alert('a 시작');
+			return $timeout(function(){
+				alert('asyncA');
+			}, 3000);
+		};
+
+		function asyncB(){
+			alert('b 시작');
+			return $timeout(function(){
+				alert('asyncB');
+			}, 1000);
+		};
+
+		function asyncC(){
+			alert('c 시작');
+			return $timeout(function(){
+				alert('asyncC');
+			}, 2000);
 		};
 	});
