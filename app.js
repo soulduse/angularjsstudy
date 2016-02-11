@@ -65,23 +65,28 @@ app.get('/money-book', function(req, res){
 	res.sendFile(path.join(__dirname+'/public/html/money-book.html'));
 });
 
-var moneyBook = [
-	{
-		date : '2016. 1. 11. 오후 8:25:39',
-		description : '저녁식사',
-		money : 7000
-	},
-	{
-		date : '2016. 1. 12 오전 7:29:49',
-		description : '아침식사',
-		money : 3500
-	},
-	{
-		date : '2016. 1. 12. 오후 1:00:05',
-		description : '점심식사',
-		money : 5000
-	}
-];
+
+app.get('/money-book/data', function(req, res){
+	var moneyBook = [
+		{
+			date : '2016. 1. 11. 오후 8:25:39',
+			description : '저녁식사',
+			money : 7000
+		},
+		{
+			date : '2016. 1. 12 오전 7:29:49',
+			description : '아침식사',
+			money : 3500
+		},
+		{
+			date : '2016. 1. 12. 오후 1:00:05',
+			description : '점심식사',
+			money : 5000
+		}
+	];
+	res.json(moneyBook);
+})
+
 
 app.listen(8080);
 // 포트 8080 사용하겟다.
