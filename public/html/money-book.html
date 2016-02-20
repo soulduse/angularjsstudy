@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Money-book!</title>
+    <script src="../components/angular/angular.js"></script>
+    <script src="../js/controllers/moneyBook.js"></script>
+    <link href="../components/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet"/>
+</head>
+<body ng-app="moneyBook" ng-controller="moneyBookController">
+
+<!-- Ajax로 추가된 부분-->
+<br><br>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>No</th> <th>날짜</th> <th>내용</th> <th>금액</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="moneybook in moneyBooks">
+                <td>{{$index}}</td>
+                <td>{{moneybook.date}}</td>
+                <td>{{moneybook.description}}</td>
+                <td>{{moneybook.money}}</td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="text" class="form-control" ng-model="addItem.description" placeholder="내용을 작성해주세요."></td>
+                <td colspan="2"><input type="text" class="form-control" ng-model="addItem.money" placeholder="금액을 작성해주세요."></td>
+            </tr>
+
+            </tbody>
+
+        </table>
+<!--         {{total()}} -->
+        <p>잔고 : {{bill.totalPrice}}</p>
+        <p>
+            <button class="btn btn-primary" ng-click="loadData()"> 가계부 불러오기 </button>
+            <button class="btn btn-success" ng-click="pushData()"> 가계부 작성 </button>
+        </p>
+    </div>
+</div>
+    
+</body>
+</html>
