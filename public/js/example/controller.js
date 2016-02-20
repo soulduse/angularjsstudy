@@ -8,8 +8,14 @@ angular.module('example', ['ngRoute'])
             .when('/home', {templateUrl : 'html/example/home.html'})
             .when('/prev', {templateUrl : 'html/example/prev.html'})
             .when('/products', {templateUrl : 'html/example/products.html'})
-            .when('/save', {templateUrl : 'html/example/productForm.html'})
-            .when('/edit/:id', {templateUrl : 'html/example/productForm.html'})
+            .when('/save', {
+                templateUrl : 'html/example/productForm.html',
+                controller : 'EditController'
+            })
+            .when('/edit/:id', {
+                templateUrl : 'html/example/productForm.html',
+                controller : 'EditController'
+            })
             .otherwise({redirectTo:'/home'});
         
     })
@@ -40,6 +46,16 @@ angular.module('example', ['ngRoute'])
         ];
 
         $scope.products = products;
+    })
+    .controller('EditController', function($scope, $route, $routeParams, $location){
+
+        // EditController에서 추가된 코드
+        $scope.product = {};
+        $scope.cancelProduct = function(){
+            $scope.product = {};
+            $location.path('/products');
+        }
+
 
         $scope.saveProduct = function(product){
             var isNew = true;
@@ -78,8 +94,7 @@ angular.module('example', ['ngRoute'])
                 }
             }
         })
-
-    });
+    })
 
 
 
