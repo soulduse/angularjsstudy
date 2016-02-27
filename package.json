@@ -24,6 +24,15 @@
   "dependencies": {
     "body-parser": "^1.14.2",
     "express": "~4.13.3",
-    "path": "~0.12.7"
+    "path": "~0.12.7",
+    "bower" : "bower install"
+  },
+  "scripts" : {
+    "start" : "node app.js",
+    "postinstall" : "bower install" // npm install 후에 실행
+  },
+  "engines" : {
+    "node" : "4.2.x",
+    "npm" : "2.14.x"
   }
 }
