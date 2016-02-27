@@ -8,19 +8,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jojoldu/angular-study.git"
+    "url": "https://github.com/soulduse/angularjsstudy.git"
   },
   "keywords": [
     "angularjs",
     "angular",
     "mean"
   ],
-  "author": "jojoldu@gmail.com",
+  "author": "soulduse@naver.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jojoldu/angular-study/issues"
+    "url": "https://github.com/soulduse/angularjsstudy/issues"
   },
-  "homepage": "https://github.com/jojoldu/angular-study",
+  "homepage": "https://github.com/soulduse/angularjsstudy",
   "dependencies": {
     "body-parser": "^1.14.2",
     "express": "~4.13.3",
