@@ -25,7 +25,7 @@
     "body-parser": "^1.14.2",
     "express": "~4.13.3",
     "path": "~0.12.7",
-    "bower" : "bower install"
+    "bower" : "~1.7.1"
   },
   "scripts" : {
     "start" : "node app.js",
