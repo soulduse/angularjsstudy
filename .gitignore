@@ -1,6 +1,6 @@
 #공통 gitignore
-
 /node_modules
+/bower_components
 /public/components
 
 #intelij 사용시 ignore
